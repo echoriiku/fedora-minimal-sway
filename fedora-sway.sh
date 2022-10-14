@@ -51,6 +51,6 @@ else
 fi
 
 cd && wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/CascadiaCode.zip
-unzip CascadiaCode.zip -d
+unzip CascadiaCode.zip -d ~/.local/share/fonts/
 sleep 3
 echo "Installation complete"
