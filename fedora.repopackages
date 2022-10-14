@@ -19,3 +19,14 @@ polkit-gnome
 sddm
 npm
 lazygit
+sway
+waybar
+swayidle
+swaybg
+bemenu
+xdg-desktop-portal-wlr
+xdg-desktop-portal
+dunst
+wofi
+python3-pip
+dnf-plugins-core

@@ -26,10 +26,13 @@ flatpak install flathub $(cat fedora.flatpackages) -y
 
 # compile and install Cargo packages
 echo "export PATH='/home/$USER/.cargo/bin'" >> cargo.sh && sudo mv ./cargo.sh /etc/profile.d/
-cargo install $(cat fedora.cargopackages) 
+cargo install $(cat fedora.cargopackages)
 
 # alacritty theme changer
 sudo npm i -g alacritty-themes
+
+# sway autotiling
+sudo pip install autotiling
 
 # enable fish
 chsh -s $(which fish)
@@ -39,5 +42,15 @@ echo "Intalling Chezmoi"
 sh -c "$(curl -fsLS https://chezmoi.io/get)" -- -b $HOME/.local/bin
 chezmoi init --apply https://github.com/echoriiku/dotfiles.git
 
+# font setup
+if [[ -d ~/.local/share/fonts/ ]]
+then
+  echo "Downloading terminal font"
+else
+  mkdir -vp ~/.local/share/fonts/
+fi
+
+cd && wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/CascadiaCode.zip
+unzip CascadiaCode.zip -d
 sleep 3
 echo "Installation complete"
