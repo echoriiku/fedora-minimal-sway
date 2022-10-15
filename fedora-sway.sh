@@ -28,6 +28,10 @@ flatpak install flathub $(cat fedora.flatpackages) -y
 echo "export PATH='/home/$USER/.cargo/bin'" >> cargo.sh && sudo mv ./cargo.sh /etc/profile.d/
 cargo install $(cat fedora.cargopackages)
 
+# enable sddm
+sudo systemctl enable sddm.service
+sudo systemctl set-default graphical.target
+
 # alacritty theme changer
 sudo npm i -g alacritty-themes
 
@@ -50,7 +54,7 @@ else
   mkdir -vp ~/.local/share/fonts/
 fi
 
-cd && wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/CascadiaCode.zip
+cd
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/CascadiaCode.zip
 unzip CascadiaCode.zip -d ~/.local/share/fonts/
-sleep 3
-echo "Installation complete"
+rm CascadiaCode.zip
